@@ -1,0 +1,25 @@
+{
+  "name": "orinoco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass scss:css",
+    "sass_w": "sass --watch scss:css",
+    "sass_wc": "sass --watch scss:css --style compressed",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVincent06/VincentAugugliaro_5_22022021.git"
+  },
+  "author": "vincent augugliaro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AVincent06/VincentAugugliaro_5_22022021/issues"
+  },
+  "homepage": "https://github.com/AVincent06/VincentAugugliaro_5_22022021#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2"
+  }
+}
