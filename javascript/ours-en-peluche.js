@@ -15,3 +15,4 @@ fetch("http://localhost:3000/api/teddies/"+idProduct)
 .catch(error => alert("Erreur : " + error));
 
 //Cart.add(idProduct); //POUR TEST A SUPPRIMER
+//Cart.remove(idProduct); //POUR TEST A SUPPRIMER

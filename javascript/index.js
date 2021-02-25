@@ -32,3 +32,4 @@ function displayTeddies(datas) {
 }
 
 //Cart.reset(); //POUR TEST A SUPPRIMER
+//alert('teddyInCart : ' +localStorage.getItem("teddyInCart")+ '\nteddyList : ' +localStorage.getItem("teddyList")); //POUR TEST A SUPPRIMER
