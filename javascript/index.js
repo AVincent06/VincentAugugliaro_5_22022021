@@ -22,7 +22,7 @@ function displayTeddies(datas) {
             '<h2 class="card-title h5">'+ data.name +'</h2>' +
             '<p class="card-text">Cet adorable petit ours en peluche n\'attend que toi.</p>' +
             '</div>' +
-            '<div class="card-footer text-center">' +
+            '<div class="card-footer text-center bg-transparent border-top-0">' +
             '<a class="btn btn-primary text-white fw-bold stretched-link" href="./ours-en-peluche.html?teddy='+ data._id +'" role="button">Adopte-moi</a>' +
             '</div>' +
             '</div>' +
