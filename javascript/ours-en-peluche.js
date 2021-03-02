@@ -34,7 +34,9 @@ function displayTeddy(datas) {
     document.getElementById("teddy-color").innerHTML = optionInSelect;
 
     document.getElementById("add-cart").innerHTML = datas.price + '€ &nbsp;&nbsp;&nbsp; Ajouter au panier';
+    document.getElementById("add-cart").addEventListener("click", function(e) {     // l'utilisation de callback anonyme est le seul moyen 
+        Cart.add(idProduct);                                                        // de gérer les events avec Bootstrap...
+    });
 }
-
 //Cart.add(idProduct); //POUR TEST A SUPPRIMER
 //Cart.remove(idProduct); //POUR TEST A SUPPRIMER
