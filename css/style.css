@@ -11815,4 +11815,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* Ajout de CSS sur la couche Bootstrap */
+#cart-popup {
+  display: none;
+  position: absolute;
+  z-index: 20;
+}
 /*# sourceMappingURL=style.css.map */
