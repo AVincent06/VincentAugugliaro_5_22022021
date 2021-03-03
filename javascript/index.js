@@ -66,8 +66,8 @@ myCart.addEventListener('mouseout', () => {
     cartPopup.style.display = 'none';
 });
 window.addEventListener('mousemove', (e) => {
-    cartPopup.style.left = 5 + e.clientX+'px';
-    cartPopup.style.top = 5 + e.clientY+'px';
+    cartPopup.style.left = 5 + e.pageX+'px';
+    cartPopup.style.top = 5 + e.pageY+'px';
 }); 
 
 //Cart.reset(); //POUR TEST A SUPPRIMER

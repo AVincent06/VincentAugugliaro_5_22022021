@@ -11816,9 +11816,13 @@ textarea.form-control-lg {
   }
 }
 /* Ajout de CSS sur la couche Bootstrap */
+#cancel-cart:hover {
+  color: white;
+}
+
 #cart-popup {
   display: none;
   position: absolute;
-  z-index: 20;
+  z-index: 1021;
 }
 /*# sourceMappingURL=style.css.map */
