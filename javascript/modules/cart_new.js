@@ -4,6 +4,8 @@
  * Variables utilisées dans localStorage :
  *      teddyInCart
  *      teddyList
+ * 
+ * Version : 2.0
  */
 
 export function add(teddyID) { 

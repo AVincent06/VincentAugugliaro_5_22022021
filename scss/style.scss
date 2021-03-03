@@ -2,8 +2,12 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 /* Ajout de CSS sur la couche Bootstrap */
+#cancel-cart:hover {
+    color: white;
+}
+
 #cart-popup {
     display: none;
     position: absolute;
-    z-index: 20;
+    z-index: 1021;
 }
