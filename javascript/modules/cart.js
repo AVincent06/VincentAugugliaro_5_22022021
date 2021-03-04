@@ -4,24 +4,78 @@
  * Variables utilisées dans localStorage :
  *      teddyInCart
  *      teddyList
+ * 
+ * Version : 2.0
  */
 
-export function add(teddyID) { 
-    /* Initialisation */
-    if(!localStorage.getItem("teddyList")) localStorage.setItem("teddyList","");
+ /* Déclaration des classes */
+export class Teddy {
+    constructor(id, name, color, price, quantity) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
 
-    /* ajout de l'identifiant à la liste */
-    let myList = localStorage.getItem("teddyList");
-    if (myList.length != 0) myList += ",";
-    myList += teddyID;
-    localStorage.setItem("teddyList",myList);
+export function add(teddy) { 
+    let myCounter;
+    if(!localStorage.getItem("teddyList")) {
+        /* Initialisation */
+        let myArray = [];
+        myCounter = myArray.push(teddy);
+        let myString = JSON.stringify(myArray);
+        localStorage.setItem("teddyList",myString);
+    } else {
+        /* ajout de teddy au localStorage */
+        let myString = localStorage.getItem("teddyList");
+        let myArray = JSON.parse(myString);
+        myCounter = myArray.push(teddy);
+        myString = JSON.stringify(myArray);
+        localStorage.setItem("teddyList",myString);
+    }
     
     /* incrémentation de teddyInCart */
-    let myCounter = parseInt(localStorage.getItem("teddyInCart"), 10);
-    myCounter++;
     localStorage.setItem("teddyInCart", myCounter.toString());
 
     refresh();
+}
+
+export function popup() {
+    /* Mise en forme du contenu de cart-popup */
+    let myLines = read();
+    let cartPopupContent = '<thead><tr><th>#</th><th>Nom</th><th>Couleur</th><th>Quantité</th><th>Prix</th></tr></thead><tbody>';
+    for(let i = 0; i < myLines.length; i++) {
+        cartPopupContent += 
+            '<tr><td>'+ (i+1) +
+            '</td><td>'+ myLines[i].name +
+            '</td><td>'+ myLines[i].color +
+            '</td><td class="text-center">'+ myLines[i].quantity +
+            '</td><td>'+ (myLines[i].quantity * myLines[i].price) +'€</td></tr>';
+    }
+    cartPopupContent += '</tbody>';
+    document.getElementById("cart-popup-inner").innerHTML = cartPopupContent;
+
+    /* Gestion de l'affichage du cart-popup */
+    let cartPopup = document.getElementById('cart-popup');
+    let myCart = document.getElementById('my-cart');
+    myCart.addEventListener('mouseover', () => {
+        cartPopup.style.display = 'block';
+    });
+    myCart.addEventListener('mouseout', () => {
+        cartPopup.style.display = 'none';
+    });
+    window.addEventListener('mousemove', (e) => {
+        cartPopup.style.left = 5 + e.pageX+'px';
+        cartPopup.style.top = 5 + e.pageY+'px';
+    });
+}
+
+export function read() {
+    let myString = localStorage.getItem("teddyList");
+    let myArray = JSON.parse(myString);
+    return myArray;
 }
 
 export function refresh() {
@@ -32,33 +86,34 @@ export function refresh() {
     document.getElementById("my-cart").innerHTML = "Panier <span class='badge bg-secondary rounded-pill'>" + localStorage.getItem("teddyInCart") + "</span>";
 }
 
-export function remove(teddyID) {
-    /* Initialisation */
-    if(!localStorage.getItem("teddyList")) localStorage.setItem("teddyList","");
-
-    /* suppression de l'identifiant de la liste */
-    let myList = localStorage.getItem("teddyList");
-    if(myList.search(teddyID) >= 0) {
-        let myArray = myList.split(',');
-        for(let i = 0; i < myArray.length; i++) { 
-            if (myArray[i] == teddyID) { 
-                myArray.splice(i, 1);
-                break; 
-            }
-        }
-        myList = myArray.toString();
-        localStorage.setItem("teddyList",myList);
-
-        /* décrémentation de teddyInCart */
-        let myCounter = parseInt(localStorage.getItem("teddyInCart"), 10);
-        myCounter--;
-        localStorage.setItem("teddyInCart", myCounter.toString());
-
-        refresh();
-
-    } else {
-        alert('Suppression impossible, l\'identifiant "'+ teddyID +'" n\'existe pas dans le localStorage!');
+export function remove(teddy) {
+    /* Controle interne*/
+    if(!localStorage.getItem("teddyList")) {
+        alert('Suppression impossible, le localStorage n\'existe pas!');
+        return;
     }
+
+    /* suppression du teddy dans teddyList du localStorage */
+    let myString = localStorage.getItem("teddyList");
+    let myArray = JSON.parse(myString);
+    let isRemoved = false;
+    for(let i = 0; i < myArray.length; i++) { 
+        if (myArray[i] == teddy) { 
+            myArray.splice(i, 1);
+            isRemoved = true;
+            break; 
+        }
+    }
+    if(!isRemoved) alert('Suppression impossible, le teddy n\'existe pas dans le localStorage!');
+    myString = JSON.stringify(myArray);
+    localStorage.setItem("teddyList",myString);
+
+    /* décrémentation de teddyInCart */
+    let myCounter = parseInt(localStorage.getItem("teddyInCart"), 10);
+    myCounter--;
+    localStorage.setItem("teddyInCart", myCounter.toString());
+
+    refresh();
 }
 
 export function reset() {
