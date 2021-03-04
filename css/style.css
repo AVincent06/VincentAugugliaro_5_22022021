@@ -11825,4 +11825,11 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 1021;
 }
+
+.prix-teddy {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  z-index: 1;
+}
 /*# sourceMappingURL=style.css.map */

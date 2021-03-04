@@ -33,10 +33,19 @@ function displayTeddy(datas) {
     }
     document.getElementById("teddy-color").innerHTML = optionInSelect;
 
+    document.getElementById("teddy-quantity").addEventListener("change", function(e) { 
+        document.getElementById("label-teddy-quantity").innerHTML = 'Quantité : ' + document.getElementById("teddy-quantity").value;
+    });
+
     document.getElementById("add-cart").innerHTML = datas.price + '€ &nbsp;&nbsp;&nbsp; Ajouter au panier';
-    document.getElementById("add-cart").addEventListener("click", function(e) {     // l'utilisation de callback anonyme est le seul moyen 
-        Cart.add(idProduct);                                                        // de gérer les events avec Bootstrap...
+    document.getElementById("add-cart").addEventListener("click", function(e) {     // l'utilisation de callback anonyme est le seul moyen de gérer les events avec Bootstrap...
+        let teddy = new Cart.Teddy(datas._id, datas.name, document.getElementById("teddy-color").value, datas.price, document.getElementById("teddy-quantity").value);
+        Cart.add(teddy);
+        location.href="./index.html";
     });
 }
+
+Cart.popup();
+
 //Cart.add(idProduct); //POUR TEST A SUPPRIMER
 //Cart.remove(idProduct); //POUR TEST A SUPPRIMER

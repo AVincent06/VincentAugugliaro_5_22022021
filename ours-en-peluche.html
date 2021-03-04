@@ -44,14 +44,21 @@
                     <h1 class="card-title" id="name"></h1>
                     <h2 class="card-subtitle mb-2 text-muted h4" id="color-and-price"></h2>
                     <p class="card-text" id="description"></p>
-                    <p class="col-3">
-                        <label for="teddy-color" class="form-label fw-bold">Couleur choisie : </label>
-                        <select class="form-select" name="teddy-color" id="teddy-color" aria-label="teddy-color"></select>
-                    </p>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label for="teddy-color" class="form-label fw-bold">Couleur choisie : </label>
+                            <select class="form-select" name="teddy-color" id="teddy-color" aria-label="teddy-color"></select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="teddy-quantity" class="form-label fw-bold" id="label-teddy-quantity">Quantité : 1</label>
+                            <input type="range" class="form-range" min="1" max="5" value="1" name="teddy-quantity" id="teddy-quantity" aria-label="teddy-quantity"></input>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="card-footer text-end bg-transparent border-top-0">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="./index.html" class="btn btn-outline-primary fw-bold" id="cancel-cart" role="button">Annuler</a>
+                        <a href="./index.html" class="btn btn-outline-primary fw-bold" id="cancel-cart" role="button">Retour</a>
                         <button class="btn btn-primary text-white fw-bold" id="add-cart" type="button"></button>
                     </div>
                 </div>
@@ -72,6 +79,15 @@
             </div>
         </div>
     </footer>
+
+    <!--Affichage d'un résumé du panier onMouseover-->
+    <div class="card bg bg-transparent border-0" id="cart-popup">
+        <div class="card-body">
+            <table class="table table-striped table-light shadow-lg" id="cart-popup-inner">
+                <!--Mise en forme dynamique par index.js-->
+            </table>
+        </div>
+    </div>
     
     <!--Bootstrap's dependencies-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
