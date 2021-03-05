@@ -11820,7 +11820,7 @@ textarea.form-control-lg {
   color: white;
 }
 
-#cart-popup {
+#cart-tooltip {
   display: none;
   position: absolute;
   z-index: 1021;

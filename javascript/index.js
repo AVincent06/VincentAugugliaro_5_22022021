@@ -32,7 +32,7 @@ function displayTeddies(datas) {
     document.getElementById("products").innerHTML = productsContent;  
 }
 
-Cart.popup(); 
+Cart.tooltip(); 
 
 //Cart.reset(); //POUR TEST A SUPPRIMER
 //alert('teddyInCart : ' +localStorage.getItem("teddyInCart")+ '\nteddyList : ' +localStorage.getItem("teddyList")); //POUR TEST A SUPPRIMER
