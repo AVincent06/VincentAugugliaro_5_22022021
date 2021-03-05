@@ -1,4 +1,4 @@
-/**
+/*****************************************************************
  * Module des Fonctions de gestion du panier sur le site Orinoco
  * 
  * Variables utilisées dans localStorage :
@@ -6,10 +6,32 @@
  *      teddyList
  * 
  * Version : 2.0
- */
+ *****************************************************************/
+
+/********** Fonctions internes au module *************/
+function readCart() {
+    let myString = localStorage.getItem("teddyList");
+    let myArray = JSON.parse(myString);
+    return myArray;
+}
+
+function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte entre 2 objets simples (égalité superficielle)
+    const propertiesOne = Object.keys(objectOne);   // Object.keys() renvoie un tableau de propriétés de l'objet
+    const propertiesTwo = Object.keys(objectTwo);
+  
+    if(propertiesOne.length !== propertiesTwo.length) return false;
+  
+    for(let property of propertiesOne)
+        if (objectOne[property] !== objectTwo[property]) return false;
+
+    return true;
+}
+/*****************************************************/
+
+/********** Fonctions externes au module *************/
 
  /* Déclaration des classes */
-export class Teddy {
+export class Product {
     constructor(id, name, color, price, quantity) {
         this.id = id;
         this.name = name;
@@ -19,63 +41,59 @@ export class Teddy {
     }
 }
 
-export function add(teddy) { 
-    let myCounter;
+export function add(product) { 
     if(!localStorage.getItem("teddyList")) {
         /* Initialisation */
         let myArray = [];
-        myCounter = myArray.push(teddy);
+        myArray.push(product);
         let myString = JSON.stringify(myArray);
         localStorage.setItem("teddyList",myString);
     } else {
-        /* ajout de teddy au localStorage */
+        /* ajout de product au localStorage */
         let myString = localStorage.getItem("teddyList");
         let myArray = JSON.parse(myString);
-        myCounter = myArray.push(teddy);
+        myArray.push(product);
         myString = JSON.stringify(myArray);
         localStorage.setItem("teddyList",myString);
     }
     
     /* incrémentation de teddyInCart */
+    if(!localStorage.getItem("teddyInCart")) localStorage.setItem("teddyInCart","0"); // Initialisation
+    let myCounter = localStorage.getItem("teddyInCart");
+    myCounter = parseInt(myCounter,10) + parseInt(product.quantity,10);
     localStorage.setItem("teddyInCart", myCounter.toString());
 
     refresh();
 }
 
-export function popup() {
-    /* Mise en forme du contenu de cart-popup */
-    let myLines = read();
-    let cartPopupContent = '<thead><tr><th>#</th><th>Nom</th><th>Couleur</th><th>Quantité</th><th>Prix</th></tr></thead><tbody>';
+export function tooltip() {
+    /* Mise en forme du contenu de cart-tooltip */
+    let myLines = readCart();
+    let cartTooltipContent = '<thead><tr><th>#</th><th>Nom</th><th>Couleur</th><th>Quantité</th><th>Prix</th></tr></thead><tbody>';
     for(let i = 0; i < myLines.length; i++) {
-        cartPopupContent += 
+        cartTooltipContent += 
             '<tr><td>'+ (i+1) +
             '</td><td>'+ myLines[i].name +
             '</td><td>'+ myLines[i].color +
             '</td><td class="text-center">'+ myLines[i].quantity +
             '</td><td>'+ (myLines[i].quantity * myLines[i].price) +'€</td></tr>';
     }
-    cartPopupContent += '</tbody>';
-    document.getElementById("cart-popup-inner").innerHTML = cartPopupContent;
+    cartTooltipContent += '</tbody>';
+    document.getElementById("cart-tooltip-inner").innerHTML = cartTooltipContent;
 
-    /* Gestion de l'affichage du cart-popup */
-    let cartPopup = document.getElementById('cart-popup');
+    /* Gestion de l'affichage du cart-tooltip */
+    let cartTooltip = document.getElementById('cart-tooltip');
     let myCart = document.getElementById('my-cart');
     myCart.addEventListener('mouseover', () => {
-        cartPopup.style.display = 'block';
+        cartTooltip.style.display = 'block';
     });
     myCart.addEventListener('mouseout', () => {
-        cartPopup.style.display = 'none';
+        cartTooltip.style.display = 'none';
     });
     window.addEventListener('mousemove', (e) => {
-        cartPopup.style.left = 5 + e.pageX+'px';
-        cartPopup.style.top = 5 + e.pageY+'px';
+        cartTooltip.style.left = 5 + e.pageX+'px';
+        cartTooltip.style.top = 5 + e.pageY+'px';
     });
-}
-
-export function read() {
-    let myString = localStorage.getItem("teddyList");
-    let myArray = JSON.parse(myString);
-    return myArray;
 }
 
 export function refresh() {
@@ -86,31 +104,32 @@ export function refresh() {
     document.getElementById("my-cart").innerHTML = "Panier <span class='badge bg-secondary rounded-pill'>" + localStorage.getItem("teddyInCart") + "</span>";
 }
 
-export function remove(teddy) {
+export function remove(product) {
     /* Controle interne*/
     if(!localStorage.getItem("teddyList")) {
         alert('Suppression impossible, le localStorage n\'existe pas!');
         return;
     }
 
-    /* suppression du teddy dans teddyList du localStorage */
+    /* suppression du product dans teddyList du localStorage */
     let myString = localStorage.getItem("teddyList");
     let myArray = JSON.parse(myString);
     let isRemoved = false;
     for(let i = 0; i < myArray.length; i++) { 
-        if (myArray[i] == teddy) { 
+        if( areIdentical(myArray[i], product) ) {
             myArray.splice(i, 1);
             isRemoved = true;
             break; 
         }
     }
-    if(!isRemoved) alert('Suppression impossible, le teddy n\'existe pas dans le localStorage!');
+    if(!isRemoved) alert('Suppression impossible, le teddy n\'existe pas dans le panier!');
     myString = JSON.stringify(myArray);
     localStorage.setItem("teddyList",myString);
 
     /* décrémentation de teddyInCart */
-    let myCounter = parseInt(localStorage.getItem("teddyInCart"), 10);
-    myCounter--;
+    if(!localStorage.getItem("teddyInCart")) localStorage.setItem("teddyInCart","0"); // Initialisation
+    let myCounter = localStorage.getItem("teddyInCart");
+    myCounter = parseInt(myCounter,10) - parseInt(product.quantity,10);
     localStorage.setItem("teddyInCart", myCounter.toString());
 
     refresh();

@@ -32,20 +32,20 @@ function displayTeddy(datas) {
         optionInSelect += '<option value="' + datas.colors[i] + '" ' + (i==0?'selected':'') + '>' + datas.colors[i] + '</option>';
     }
     document.getElementById("teddy-color").innerHTML = optionInSelect;
+    if(nbColors == 1) document.getElementById("teddy-color").disabled = true;
 
     document.getElementById("teddy-quantity").addEventListener("change", function(e) { 
         document.getElementById("label-teddy-quantity").innerHTML = 'Quantité : ' + document.getElementById("teddy-quantity").value;
     });
 
-    document.getElementById("add-cart").innerHTML = datas.price + '€ &nbsp;&nbsp;&nbsp; Ajouter au panier';
     document.getElementById("add-cart").addEventListener("click", function(e) {     // l'utilisation de callback anonyme est le seul moyen de gérer les events avec Bootstrap...
-        let teddy = new Cart.Teddy(datas._id, datas.name, document.getElementById("teddy-color").value, datas.price, document.getElementById("teddy-quantity").value);
-        Cart.add(teddy);
+        let product = new Cart.Product(datas._id, datas.name, document.getElementById("teddy-color").value, datas.price, document.getElementById("teddy-quantity").value);
+        Cart.add(product);
         location.href="./index.html";
     });
 }
 
-Cart.popup();
+Cart.tooltip();
 
 //Cart.add(idProduct); //POUR TEST A SUPPRIMER
 //Cart.remove(idProduct); //POUR TEST A SUPPRIMER
