@@ -8,13 +8,7 @@
  * Version : 2.0
  *****************************************************************/
 
-/********** Fonctions internes au module *************/
-function readCart() {
-    let myString = localStorage.getItem("teddyList");
-    let myArray = JSON.parse(myString);
-    return myArray;
-}
-
+/********** FONCTIONS INTERNES AU MODULE *************/
 function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte entre 2 objets simples (égalité superficielle)
     const propertiesOne = Object.keys(objectOne);   // Object.keys() renvoie un tableau de propriétés de l'objet
     const propertiesTwo = Object.keys(objectTwo);
@@ -28,16 +22,17 @@ function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte ent
 }
 /*****************************************************/
 
-/********** Fonctions externes au module *************/
+/********** FONCTIONS EXTERNES AU MODULE *************/
 
  /* Déclaration des classes */
 export class Product {
-    constructor(id, name, color, price, quantity) {
+    constructor(id, name, color, price, quantity, image) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.price = price;
         this.quantity = quantity;
+        this.image = image;
     }
 }
 
@@ -94,6 +89,12 @@ export function tooltip() {
         cartTooltip.style.left = 5 + e.pageX+'px';
         cartTooltip.style.top = 5 + e.pageY+'px';
     });
+}
+
+export function readCart() {
+    let myString = localStorage.getItem("teddyList");
+    let myArray = JSON.parse(myString);
+    return myArray;
 }
 
 export function refresh() {

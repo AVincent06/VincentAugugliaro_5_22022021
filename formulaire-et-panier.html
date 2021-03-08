@@ -8,7 +8,7 @@
     <!-- chargement de bootstrap généré en local avec sass-->
     <link rel="stylesheet" href="./css/style.css" /> 
 
-    <title>Magnifiques ours en peluche faits à la main - Orinoco</title>
+    <title>Formulaire de commande et panier détaillé - Orinoco</title>
 </head>
 <body>
     <header class="container mb-4 sticky-top shadow">
@@ -23,10 +23,10 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
+                            <a class="nav-link" aria-current="page" href="index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="my-cart" href="formulaire-et-panier.html">Panier</a>
+                            <a class="nav-link active" id="my-cart" href="formulaire-et-panier.html">Panier</a>
                         </li>
                     </ul>
                 </div>
@@ -37,13 +37,54 @@
     <main class="container">
         <div class="row my-3">
             <div class="col">
-                <div class="alert alert-primary" role="alert">
-                    <h1>Bienvenu sur Orinoco,<br><span class="h3">la boutique en ligne où vous allez adopter de magnifiques ours en peluche faits à la main !</span></h1>
+                <div class="alert alert-secondary text-center" role="alert">
+                    <h1 class="h2">Achetez vos ours en peluche faits à la main</h1>
                 </div>
             </div>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="products">
-            <!--Mise en forme dynamique par index.js-->
+
+        <div class="row my-3">
+            
+            <!--Liste des produits-->
+            <section class="col-12 col-md-6 order-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title h3">Liste des produits</h2>
+                    </div>
+                    <div class="card-body px-0 px-sm-3">
+                        <div class="card-text">
+                            <table class="table table-hover" id="productsList">
+                                <!--Mise en forme dynamique par formulaire-et-panier.js-->
+                            </table>
+                            <hr class="text-primary">
+                            code
+                            <hr class="text-primary">
+                            sous-total
+                            <hr class="text-primary">
+                            total
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </section>
+
+            <!--Formulaire de commande-->
+            <section class="col-12 col-md-6 order-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title h3">Formulaire de commande</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"></p>
+                    </div>
+                    <div class="card-footer">
+                        
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
@@ -75,6 +116,6 @@
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <!-- Intégration du JavaScript -->
-    <script type="module" src="./javascript/index.js"></script>
+    <script type="module" src="./javascript/formulaire-et-panier.js"></script>
 </body>
 </html>

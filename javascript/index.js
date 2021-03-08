@@ -32,6 +32,7 @@ function displayTeddies(datas) {
     document.getElementById("products").innerHTML = productsContent;  
 }
 
+/* Construction et gestion du tooltip */
 Cart.tooltip(); 
 
 //Cart.reset(); //POUR TEST A SUPPRIMER

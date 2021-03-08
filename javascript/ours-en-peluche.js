@@ -39,13 +39,18 @@ function displayTeddy(datas) {
     });
 
     document.getElementById("add-cart").addEventListener("click", function(e) {     // l'utilisation de callback anonyme est le seul moyen de gérer les events avec Bootstrap...
-        let product = new Cart.Product(datas._id, datas.name, document.getElementById("teddy-color").value, datas.price, document.getElementById("teddy-quantity").value);
+        let product = new Cart.Product(
+            datas._id, 
+            datas.name, 
+            document.getElementById("teddy-color").value, 
+            datas.price, 
+            document.getElementById("teddy-quantity").value, 
+            document.getElementById("image-url").src
+        );
         Cart.add(product);
         location.href="./index.html";
     });
 }
 
+/* Construction et gestion du tooltip */
 Cart.tooltip();
-
-//Cart.add(idProduct); //POUR TEST A SUPPRIMER
-//Cart.remove(idProduct); //POUR TEST A SUPPRIMER
