@@ -11835,5 +11835,6 @@ textarea.form-control-lg {
 
 #productsList img {
   height: 50px;
+  min-width: 70px;
 }
 /*# sourceMappingURL=style.css.map */
