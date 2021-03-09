@@ -53,19 +53,68 @@
                     </div>
                     <div class="card-body px-0 px-sm-3">
                         <div class="card-text">
+
+                            <!--Résumé des produits dans le panier-->
                             <table class="table table-hover" id="productsList">
                                 <!--Mise en forme dynamique par formulaire-et-panier.js-->
                             </table>
                             <hr class="text-primary">
-                            code
+
+                            <!--Code de réduction-->
+                            <div class="d-flex justify-content-around px-3 px-sm-0">
+                                <input type="text" class="form-control w-75" id="discount-code" maxlength="10" placeholder="Code de réduction">
+                                <button type="button" class="btn btn-primary text-white fw-bold">Appliquer</button>
+                            </div>
                             <hr class="text-primary">
-                            sous-total
+
+                            <!--Sous-total-->
+                            <div class="px-3 px-sm-0">
+                                <table class="table">
+                                    <tr>
+                                        <td class="fw-bold">Sous-total :</td>
+                                        <td>&nbsp;</td>
+                                        <td class="text-end" id="sous-total"><!--Mise en forme dynamique par formulaire-et-panier.js--></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold border-bottom-0 text-nowrap">Frais de port :</td>
+                                        <td class="border-bottom-0">&nbsp;</td>
+                                        <td class="text-end text-muted border-bottom-0">calcul en cours</td>
+                                    </tr>
+                                </table>
+                            </div>
                             <hr class="text-primary">
-                            total
+
+                            <!--Total-->
+                            <div class="px-3 px-sm-0">
+                                <table class="table">
+                                    <tr>
+                                        <td class="fw-bold border-bottom-0">Total :</td>
+                                        <td class="border-bottom-0">&nbsp;</td>
+                                        <td class="text-end border-bottom-0" id="total"><!--Mise en forme dynamique par formulaire-et-panier.js--></td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-
+                    <div class="card-footer"></div>
+                </div>
+  
+                <!-- Confirmation de suppression -->
+                <div class="modal fade" id="deletion-confirmation" tabindex="-1" aria-labelledby="deletion-confirmation-label" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content bg-light">
+                            <div class="modal-header">
+                                <span class="modal-title h5" id="deletion-confirmation-label">Confirmation de suppression</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Etes-vous sûr de vouloir retirer du panier :<br> <span id="modal-selected"></span> ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Non</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="remove-from-cart">Oui, retirez</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
