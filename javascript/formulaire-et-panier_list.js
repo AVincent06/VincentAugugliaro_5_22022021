@@ -1,6 +1,6 @@
 import * as Cart from './modules/cart.js';
 
-/* déclaration des fonctions */
+/********************  Déclaration des fonctions *********************/
 function displayRightCard() {
     /* Mise en forme du contenu de #productsList */
     let myLines = Cart.readCart();
@@ -35,21 +35,23 @@ function displayRightCard() {
     document.getElementById("total").innerHTML = total+' €';    
 }
 
-/* mise à jour des quantités dans le panier */
-Cart.refresh();
-
+/* ---------------------------------------------------------------- */
+Cart.refresh(); // mise à jour des quantités dans le panier
 displayRightCard();
+Cart.tooltip(); // Construction et gestion du tooltip
+/* ---------------------------------------------------------------- */
 
-/* Construction et gestion du tooltip */
-Cart.tooltip();
-
-/* gestion événementielle de la suppression d'un produit dans le panier */
+/* gestion événementielle de l'affichage dynamique de la modal */
 let selected = 0;
 document.getElementById("deletion-confirmation").addEventListener("shown.bs.modal", function(e) { 
     let myLines = Cart.readCart();
     selected = localStorage.getItem("selected");
     document.getElementById("modal-selected").innerHTML = myLines[selected].quantity + " " + myLines[selected].name + " de couleur " + myLines[selected].color;
 });
+document.getElementById("deletion-confirmation").addEventListener("hidden.bs.modal", function(e) { 
+    document.getElementById("modal-selected").innerHTML = "";
+});
+/* gestion événementielle de la suppression d'un produit dans le panier */
 document.getElementById("remove-from-cart").addEventListener("click", function(e) { 
     let myLines = Cart.readCart();
     selected = localStorage.getItem("selected");

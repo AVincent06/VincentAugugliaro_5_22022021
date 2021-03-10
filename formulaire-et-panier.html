@@ -47,7 +47,7 @@
             
             <!--Liste des produits-->
             <section class="col-12 col-md-6 order-md-2">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h2 class="card-title h3">Liste des produits</h2>
                     </div>
@@ -121,16 +121,76 @@
 
             <!--Formulaire de commande-->
             <section class="col-12 col-md-6 order-md-1">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h2 class="card-title h3">Formulaire de commande</h2>
                     </div>
                     <div class="card-body">
-                        <p class="card-text"></p>
+                        <div class="card-text">
+                            <form action="" method="post">
+                                <fieldset>
+                                    <legend>Contact</legend>
+                                    <div class="row">
+                                        <div class="col-4"><label for="email" class="form-label">Email*</label></div>
+                                        <div class="col-8 text-end ">
+                                            <small>
+                                                <a href="#">se connecter</a> | <a href="#">s'enregistrer</a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <input type="email" class="form-control" id="email" placeholder="votreemail@modele.fr" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="mailing-list" checked>
+                                        <label class="form-check-label" for="mailing-list">mailing list</label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Adresse de livraison</legend>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <label for="firstname" class="form-label">Prénom*</label>
+                                            <input type="text" class="form-control" id="firstname" placeholder="Prénom" pattern="[A-Za-z ]{1,255}" required>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <label for="lastname" class="form-label">Nom*</label>
+                                            <input type="text" class="form-control" id="lastname" placeholder="Nom" pattern="[A-Za-z ]{1,255}" required>
+                                        </div>
+                                    </div>
+                                    <label for="compagny" class="form-label">Entreprise</label>
+                                    <input type="text" class="form-control" id="compagny" placeholder="Entreprise">
+                                    <label for="address" class="form-label">Adresse*</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Adresse" required>
+                                    <label for="additional-address" class="form-label visually-hidden">Complément d'adresse</label>
+                                    <input type="text" class="form-control" id="additional-address" placeholder="Complément d'adresse">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-4">
+                                            <label for="postal-code" class="form-label">Code postal</label>
+                                            <input type="number" class="form-control" id="postal-code" placeholder="123456">
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <label for="city" class="form-label">Ville*</label>
+                                            <input type="text" class="form-control" id="city" placeholder="Ville" pattern="[A-Za-z ]{1,255}" required>
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <label for="country" class="form-label">Pays</label>
+                                            <input type="text" class="form-control" id="country" placeholder="Pays" pattern="[A-Za-z ]{1,255}" >
+                                        </div>
+                                    </div>
+                                    <label for="phone" class="form-label">Téléphone</label>
+                                    <input type="number" class="form-control" id="phone" placeholder="0123456789">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="sms" checked>
+                                        <label class="form-check-label" for="sms">sms</label>
+                                    </div>
+                                </fieldset>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                                    <input class="btn btn-outline-primary fw-bold outline-hover" type="reset" value="Effacer">
+                                    <input class="btn btn-primary text-white fw-bold" type="submit" value="Commander">
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        
-                    </div>
+                    <div class="card-footer"></div>
                 </div>
             </section>
 
@@ -165,6 +225,7 @@
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <!-- Intégration du JavaScript -->
-    <script type="module" src="./javascript/formulaire-et-panier.js"></script>
+    <script type="module" src="./javascript/formulaire-et-panier_list.js"></script>
+    <script src="./javascript/formulaire-et-panier_form.js"></script>
 </body>
 </html>

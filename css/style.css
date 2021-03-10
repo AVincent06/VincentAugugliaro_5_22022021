@@ -2375,7 +2375,7 @@ progress {
   }
 }
 .form-label {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .col-form-label {
@@ -11816,14 +11816,14 @@ textarea.form-control-lg {
   }
 }
 /* Ajout de CSS sur la couche Bootstrap */
-#cancel-cart:hover {
-  color: white;
-}
-
 #cart-tooltip {
   display: none;
   position: absolute;
   z-index: 1021;
+}
+
+.outline-hover:hover {
+  color: white;
 }
 
 .prix-teddy {
