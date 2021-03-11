@@ -32,6 +32,7 @@ function displayRightCard() {
     /* Mise en forme du contenu de #total */
     let shippingCosts = 0;  // Fonctionnalité à développer
     let total = sousTotal + shippingCosts;
+    localStorage.setItem("total",total);
     document.getElementById("total").innerHTML = total+' €';    
 }
 
