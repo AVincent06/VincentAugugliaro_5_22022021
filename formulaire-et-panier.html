@@ -127,7 +127,8 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text">
-                            <form action="" method="post">
+                            <!----------------------------------------- DEBUT DU FORMULAIRE ------------------------------------------>
+                            <form action="" method="post" id="my-form">
                                 <fieldset>
                                     <legend>Contact</legend>
                                     <div class="row">
@@ -138,9 +139,9 @@
                                             </small>
                                         </div>
                                     </div>
-                                    <input type="email" class="form-control" id="email" placeholder="votreemail@modele.fr" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="votreemail@modele.fr" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="mailing-list" checked>
+                                        <input class="form-check-input" type="checkbox" id="mailing-list" name="mailing-list" checked>
                                         <label class="form-check-label" for="mailing-list">mailing list</label>
                                     </div>
                                 </fieldset>
@@ -149,37 +150,37 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
                                             <label for="firstname" class="form-label">Prénom*</label>
-                                            <input type="text" class="form-control" id="firstname" placeholder="Prénom" pattern="[A-Za-z ]{1,255}" required>
+                                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom" pattern="^\D*$" required>
                                         </div>
                                         <div class="col-12 col-lg-6">
                                             <label for="lastname" class="form-label">Nom*</label>
-                                            <input type="text" class="form-control" id="lastname" placeholder="Nom" pattern="[A-Za-z ]{1,255}" required>
+                                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom" pattern="^\D*$" required>
                                         </div>
                                     </div>
                                     <label for="compagny" class="form-label">Entreprise</label>
-                                    <input type="text" class="form-control" id="compagny" placeholder="Entreprise">
+                                    <input type="text" class="form-control" id="compagny" name="compagny" placeholder="Entreprise">
                                     <label for="address" class="form-label">Adresse*</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Adresse" required>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse" required>
                                     <label for="additional-address" class="form-label visually-hidden">Complément d'adresse</label>
-                                    <input type="text" class="form-control" id="additional-address" placeholder="Complément d'adresse">
+                                    <input type="text" class="form-control" id="additional-address" name="additional-address" placeholder="Complément d'adresse">
                                     <div class="row">
                                         <div class="col-12 col-lg-4">
                                             <label for="postal-code" class="form-label">Code postal</label>
-                                            <input type="number" class="form-control" id="postal-code" placeholder="123456">
+                                            <input type="number" class="form-control" id="postal-code" name="postal-code" placeholder="123456">
                                         </div>
                                         <div class="col-12 col-lg-4">
                                             <label for="city" class="form-label">Ville*</label>
-                                            <input type="text" class="form-control" id="city" placeholder="Ville" pattern="[A-Za-z ]{1,255}" required>
+                                            <input type="text" class="form-control" id="city" name="city" placeholder="Ville" pattern="^\D*$" required>
                                         </div>
                                         <div class="col-12 col-lg-4">
                                             <label for="country" class="form-label">Pays</label>
-                                            <input type="text" class="form-control" id="country" placeholder="Pays" pattern="[A-Za-z ]{1,255}" >
+                                            <input type="text" class="form-control" id="country" name="country" placeholder="Pays" pattern="^\D*$" >
                                         </div>
                                     </div>
                                     <label for="phone" class="form-label">Téléphone</label>
-                                    <input type="number" class="form-control" id="phone" placeholder="0123456789">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="0123456789">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="sms" checked>
+                                        <input class="form-check-input" type="checkbox" id="sms" name="sms" checked>
                                         <label class="form-check-label" for="sms">sms</label>
                                     </div>
                                 </fieldset>
@@ -188,12 +189,12 @@
                                     <input class="btn btn-primary text-white fw-bold" type="submit" value="Commander">
                                 </div>
                             </form>
+                            <!----------------------------------------- FIN DU FORMULAIRE ------------------------------------------>
                         </div>
                     </div>
                     <div class="card-footer"></div>
                 </div>
             </section>
-
         </div>
     </main>
 
@@ -226,6 +227,6 @@
 
     <!-- Intégration du JavaScript -->
     <script type="module" src="./javascript/formulaire-et-panier_list.js"></script>
-    <script src="./javascript/formulaire-et-panier_form.js"></script>
+    <script type="module" src="./javascript/formulaire-et-panier_form.js"></script>
 </body>
 </html>
