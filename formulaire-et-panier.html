@@ -108,11 +108,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Etes-vous sûr de vouloir retirer du panier :<br> <span id="modal-selected"></span> ?
+                                Etes-vous sûr de vouloir supprimer du panier :<br> <span id="modal-selected"></span> ?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Non</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="remove-from-cart">Oui, retirez</button>
+                                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Retour</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="remove-from-cart">Supprimer</button>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                 </fieldset>
                                 <fieldset>
                                     <legend>Adresse de livraison</legend>
-                                    <div class="row">
+                                    <div class="row mb-2">
                                         <div class="col-12 col-lg-6">
                                             <label for="firstname" class="form-label">Prénom*</label>
                                             <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom" pattern="^\D*$" required>
@@ -157,13 +157,21 @@
                                             <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom" pattern="^\D*$" required>
                                         </div>
                                     </div>
-                                    <label for="compagny" class="form-label">Entreprise</label>
-                                    <input type="text" class="form-control" id="compagny" name="compagny" placeholder="Entreprise">
-                                    <label for="address" class="form-label">Adresse*</label>
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse" required>
-                                    <label for="additional-address" class="form-label visually-hidden">Complément d'adresse</label>
-                                    <input type="text" class="form-control" id="additional-address" name="additional-address" placeholder="Complément d'adresse">
-                                    <div class="row">
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="compagny" class="form-label">Entreprise</label>
+                                            <input type="text" class="form-control" id="compagny" name="compagny" placeholder="Entreprise">    
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="address" class="form-label">Adresse*</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Adresse" required>
+                                            <label for="additional-address" class="form-label visually-hidden">Complément d'adresse</label>
+                                            <input type="text" class="form-control" id="additional-address" name="additional-address" placeholder="Complément d'adresse">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
                                         <div class="col-12 col-lg-4">
                                             <label for="postal-code" class="form-label">Code postal</label>
                                             <input type="number" class="form-control" id="postal-code" name="postal-code" placeholder="123456">
@@ -177,11 +185,15 @@
                                             <input type="text" class="form-control" id="country" name="country" placeholder="Pays" pattern="^\D*$" >
                                         </div>
                                     </div>
-                                    <label for="phone" class="form-label">Téléphone</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="0123456789">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="sms" name="sms" checked>
-                                        <label class="form-check-label" for="sms">sms</label>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="phone" class="form-label">Téléphone</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="0123456789">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="sms" name="sms" checked>
+                                                <label class="form-check-label" for="sms">sms</label>
+                                            </div>
+                                        </div>    
                                     </div>
                                 </fieldset>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
