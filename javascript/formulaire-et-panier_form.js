@@ -1,8 +1,9 @@
 /*********************************************************
- * Fichier  : formulaire-et-panier_form.js
- * Rôle     : Gestion exclusif de la partie formulaire
- * Appel    : Dans le fichier formulaire-et-panier_form.html,
- *            juste après formulaire-et-panier_list.js
+ * Fichier      : formulaire-et-panier_form.js
+ * Rôle         : Gestion exclusif de la partie formulaire
+ * Appel        : Dans le fichier formulaire-et-panier_form.html,
+ *                juste après formulaire-et-panier_list.js
+ * localStorage : total, contact, 
 *********************************************************/
 import * as Cart from './modules/cart.js';
 
@@ -20,9 +21,7 @@ import * as Cart from './modules/cart.js';
 /* Déclaration des fonctions */
 function prepareOrderConfirmation(datas) {
     let total = localStorage.getItem("total");
-    alert("commande n° : "+ datas.orderId +"\nTotal :"+ total +" €");
-
-    // location.href="./confirmation-de-commande.html"; /* ON RESET LE LOCAL STORAGE SUR CETTE PAGE */
+    location.href="./confirmation-de-commande.html?order="+ datas.orderId +"&total="+total;
 }
 
 document.getElementById("my-form").addEventListener("submit", function(e) {
@@ -36,6 +35,8 @@ document.getElementById("my-form").addEventListener("submit", function(e) {
         e.target.city.value,
         e.target.email.value
     );
+    let myString = JSON.stringify(contact);
+    localStorage.setItem("contact",myString);
 
     /* Tableau des produits pour l'API*/
     let myLines = Cart.readCart();

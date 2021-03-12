@@ -61,36 +61,6 @@ export function add(product) {
     refresh();
 }
 
-export function tooltip() {
-    /* Mise en forme du contenu de cart-tooltip */
-    let myLines = readCart();
-    let cartTooltipContent = '<thead><tr><th>#</th><th>Nom</th><th>Couleur</th><th>Quantité</th><th>Prix</th></tr></thead><tbody>';
-    for(let i = 0; i < myLines.length; i++) {
-        cartTooltipContent += 
-            '<tr><td>'+ (i+1) +
-            '</td><td>'+ myLines[i].name +
-            '</td><td>'+ myLines[i].color +
-            '</td><td class="text-center">'+ myLines[i].quantity +
-            '</td><td>'+ (myLines[i].quantity * myLines[i].price) +'€</td></tr>';
-    }
-    cartTooltipContent += '</tbody>';
-    document.getElementById("cart-tooltip-inner").innerHTML = cartTooltipContent;
-
-    /* Gestion de l'affichage du cart-tooltip */
-    let cartTooltip = document.getElementById('cart-tooltip');
-    let myCart = document.getElementById('my-cart');
-    myCart.addEventListener('mouseover', () => {
-        cartTooltip.style.display = 'block';
-    });
-    myCart.addEventListener('mouseout', () => {
-        cartTooltip.style.display = 'none';
-    });
-    window.addEventListener('mousemove', (e) => {
-        cartTooltip.style.left = 5 + e.pageX+'px';
-        cartTooltip.style.top = 5 + e.pageY+'px';
-    });
-}
-
 export function readCart() {
     let myString = localStorage.getItem("teddyList");
     let myArray = JSON.parse(myString);
@@ -139,4 +109,34 @@ export function remove(product) {
 export function reset() {
     if(confirm("Etes-vous sûr de vouloir effacer le localStorage?")) localStorage.clear();
     refresh();
+}
+
+export function tooltip() {
+    /* Mise en forme du contenu de cart-tooltip */
+    let myLines = readCart();
+    let cartTooltipContent = '<thead><tr><th>#</th><th>Nom</th><th>Couleur</th><th>Quantité</th><th>Prix</th></tr></thead><tbody>';
+    for(let i = 0; i < myLines.length; i++) {
+        cartTooltipContent += 
+            '<tr><td>'+ (i+1) +
+            '</td><td>'+ myLines[i].name +
+            '</td><td>'+ myLines[i].color +
+            '</td><td class="text-center">'+ myLines[i].quantity +
+            '</td><td>'+ (myLines[i].quantity * myLines[i].price) +'€</td></tr>';
+    }
+    cartTooltipContent += '</tbody>';
+    document.getElementById("cart-tooltip-inner").innerHTML = cartTooltipContent;
+
+    /* Gestion de l'affichage du cart-tooltip */
+    let cartTooltip = document.getElementById('cart-tooltip');
+    let myCart = document.getElementById('my-cart');
+    myCart.addEventListener('mouseover', () => {
+        cartTooltip.style.display = 'block';
+    });
+    myCart.addEventListener('mouseout', () => {
+        cartTooltip.style.display = 'none';
+    });
+    window.addEventListener('mousemove', (e) => {
+        cartTooltip.style.left = 5 + e.pageX+'px';
+        cartTooltip.style.top = 5 + e.pageY+'px';
+    });
 }

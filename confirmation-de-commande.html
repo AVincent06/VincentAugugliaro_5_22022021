@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chargement de bootstrap généré en local avec sass-->
+    <link rel="stylesheet" href="./css/style.css" /> 
+
+    <title>Confirmation de commande - Orinoco</title>
+</head>
+<body>
+    <header class="container mb-4 sticky-top shadow">
+        <div class="row">
+            <nav class="col navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/logo.png" alt="Orinoco" height="50"><!--METTRE ICI LE TITRE EN LETTRE UNE FOIS LA FONT INTEGREE-->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-cart" href="formulaire-et-panier.html">Panier</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>        
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Merci pour votre commande</h1>
+                <p class="h4">
+                    Vous recevrez un email quand vos articles seront envoyés.<br> Si vous avez des questions, appelez-nous au<br> +33 1 23 45 67 89.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 px-1">
+                <div class="alert alert-secondary" role="alert">
+                    <h2 class="h3">Résumé :</h2>
+                    <p>
+                        <u>Commande n°</u> : <span id="order" class="text-nowrap"><!--Mise en forme dynamique par confirmation-de-commande.js--></span><br>
+                        <u>Date de la commande</u> : <span id="date"><!--Mise en forme dynamique par confirmation-de-commande.js--></span><br>
+                        <u>Total de la commande</u> : <span id="total"><!--Mise en forme dynamique par confirmation-de-commande.js--></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 px-1">
+                <div class="alert alert-secondary" role="alert">
+                    <h2 class="h3">Adresse de livraison :</h2>
+                    <p id="address"><!--Mise en forme dynamique par confirmation-de-commande.js--></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container bg-light mt-4">
+        <div class="row pt-4 pb-3">
+            <div class="col">
+                <ul class="list-inline text-center h3">
+                    <li class="list-inline-item"><a href="#">Mentions légales</a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item"><a href="#">Conditions générales de vente </a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item"><a href="#">RGPD</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    <!--Bootstrap's dependencies-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- Intégration du JavaScript -->
+    <script type="module" src="./javascript/confirmation-de-commande.js"></script>
+</body>
+</html>
