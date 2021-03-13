@@ -31,3 +31,37 @@ document.getElementById('address').innerHTML = (
     contact.address +'<br>'+
     contact.city
 );
+
+/* Mise en forme de la liste des produits commandés */
+let myLines = Cart.readCart();
+let numberOfUnits = '';
+let borderBottom = '';
+let productsListContent = 
+    '<thead>' +
+        '<tr>' +
+            '<th scope="col">Produit commandé</th>' +
+            '<th scope="col">Nom / Quantité / Couleur</th>' +
+            '<th scope="col" class="text-end">Prix</th>' +
+        '</tr>' +
+    '</thead>';
+for(let i = 0; i < myLines.length; i++) {
+    numberOfUnits = myLines[i].quantity>1 ? ' <span class="text-secondary">x&nbsp;'+ myLines[i].quantity +'</span>' : '';
+    borderBottom = i==myLines.length-1 ? ' border-bottom-0' : '';
+    productsListContent += 
+        '<tr>'+
+            '<td class="text-start'+ borderBottom +'">'+ '<img src="'+ myLines[i].image +'" alt="'+ myLines[i].name +' l\'ours en peluche" class="img-thumbnail">' +'</td>' +
+            '<td class="text-start'+ borderBottom +'">'+ '<h3 class="h5">'+ myLines[i].name + numberOfUnits +'</h3>'+ myLines[i].color +'</td>'+
+            '<td class="text-end'+ borderBottom +'">'+ (myLines[i].quantity * myLines[i].price) +'€</td>' +
+        '</tr>';
+}
+document.getElementById("productsList").innerHTML = productsListContent;
+
+/* Mise en forme du contenu de #sous-total */
+let sousTotal = 0;
+for (const product of myLines) {
+    sousTotal += parseInt(product.quantity*product.price, 10);
+}
+document.getElementById("sous-total").innerHTML = sousTotal+' €';
+
+/* Mise en forme du contenu de #total */
+document.getElementById("total-bis").innerHTML = total+' €';

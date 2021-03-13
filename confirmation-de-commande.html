@@ -35,6 +35,7 @@
     </header>
 
     <main class="container">
+
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Merci pour votre commande</h1>
@@ -43,24 +44,64 @@
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-6 px-1">
-                <div class="alert alert-secondary" role="alert">
+
+        <div class="row my-3">
+            <div class="col-12 col-md-6">
+                <div class="alert alert-secondary mx-xl-5" role="alert">
                     <h2 class="h3">Résumé :</h2>
                     <p>
-                        <u>Commande n°</u> : <span id="order" class="text-nowrap"><!--Mise en forme dynamique par confirmation-de-commande.js--></span><br>
+                        <u>Commande n°</u> : <span id="order"><!--Mise en forme dynamique par confirmation-de-commande.js--></span><br>
                         <u>Date de la commande</u> : <span id="date"><!--Mise en forme dynamique par confirmation-de-commande.js--></span><br>
                         <u>Total de la commande</u> : <span id="total"><!--Mise en forme dynamique par confirmation-de-commande.js--></span>
                     </p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 px-1">
-                <div class="alert alert-secondary" role="alert">
+            <div class="col-12 col-md-6">
+                <div class="alert alert-secondary mx-xl-5" role="alert">
                     <h2 class="h3">Adresse de livraison :</h2>
                     <p id="address"><!--Mise en forme dynamique par confirmation-de-commande.js--></p>
                 </div>
             </div>
         </div>
+
+        <!--Liste des produits commandés-->
+        <div class="row">
+            <section class="col-12">
+                <div class="card mb-3 mx-xl-5">
+                    <div class="card-header">
+                        <h2 class="card-title h3">Liste des produits commandés</h2>
+                    </div>
+                    <div class="card-body px-0 px-sm-3">
+                        <div class="card-text">
+
+                            <!--Résumé des produits dans le panier-->
+                            <table class="table" id="productsList">
+                                <!--Mise en forme dynamique par confirmation-de-commande.js-->
+                            </table>
+                            <hr class="text-primary">
+
+                            <!--Sous-total et Total-->
+                            <table class="table">
+                                <tr>
+                                    <td class="fw-bold text-end border-bottom-0">Sous-total :</td>
+                                    <td class="text-end" id="sous-total"><!--Mise en forme dynamique par confirmation-de-commande.js--></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-nowrap text-end border-bottom-0">Frais de port :</td>
+                                    <td class="text-end">--Offert--</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-end border-bottom-0">Total :</td>
+                                    <td class="text-end" id="total-bis"><!--Mise en forme dynamique par confirmation-de-commande.js--></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer"></div>
+                </div>
+            </section>
+        </div>
+
     </main>
 
     <footer class="container bg-light mt-4">
