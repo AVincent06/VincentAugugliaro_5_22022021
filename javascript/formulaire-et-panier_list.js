@@ -16,7 +16,7 @@ function displayRightCard() {
                 '<td class="text-start'+ borderBottom +'">'+ '<h3 class="h5">'+ myLines[i].name + numberOfUnits +'</h3>'+ myLines[i].color +'</td>'+
                 '<td class="text-end'+ borderBottom +'">'+ (myLines[i].quantity * myLines[i].price) +'€</td>' +
                 '<td class="text-start'+ borderBottom +'">' +
-                    '<button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#deletion-confirmation" onClick="localStorage.setItem(\'selected\',\''+ i +'\');"></button>' +
+                    '<button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#deletion-confirmation" aria-label="Supprimer" onClick="localStorage.setItem(\'selected\',\''+ i +'\');"></button>' +
                 '</td>' +
             '</tr>';
     }

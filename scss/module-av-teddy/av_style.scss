@@ -1,0 +1,229 @@
+@use "sass:color";
+@use "sass:math";
+
+// Variables modifiables (réglages ici)
+$color-face : #c28c19;
+$size-face : 150px;
+
+$pos-cheek-right : 0deg;
+$pos-ear-right : 40deg;
+$pos-eye-right : 45deg;
+$pos-paw-right : 0deg;
+
+//Variables dépendantes (ne pas toucher)
+$color-ear-in : $color-face;
+$color-ear-out : color.scale($color-face, $lightness: -30%);
+$color-muzzle : color.scale($color-face, $lightness: 30%);
+$color-noze : color.scale($color-face, $lightness: -60%);
+$color-paw : $color-ear-out;
+$offset : $size-face/4;
+$origin-x : ($size-face+$offset)/2;
+$origin-y : $size-face/2;
+$pos-cheek-left : 180deg - $pos-cheek-right;
+$pos-ear-left : 180deg - $pos-ear-right;
+$pos-eye-left : 180deg - $pos-eye-right;
+$pos-paw-left : 180deg - $pos-paw-right;
+$rayon : $size-face/2;
+$size-cheek : $size-face/10;
+$size-ear : $size-face/4;
+$size-eye : $size-face/5;
+$size-muzzle : $size-ear;
+$size-noze : $size-ear/4;
+$size-paw : $size-ear;
+
+/*********************** @mixin ************************/
+@mixin cheek($angle) {
+    background-color: pink;
+    border-radius: 100%;
+    height: $size-cheek;
+    left: $origin-x + math.cos($angle) * ($rayon/2 + $size-muzzle/4);
+    position: absolute;
+    top: $origin-y + math.sin($angle) * -1*($rayon/2 + $size-muzzle/4);
+    transform: translate(-50%,-50%);
+    width: $size-cheek;
+    z-index: 11;
+}
+@mixin ear($angle) {
+    background-color: $color-ear-out;
+    border-radius: 100%;
+    height: $size-ear;
+    left: $origin-x + math.cos($angle) * $rayon;
+    position: absolute;
+    top: $origin-y + math.sin($angle) * -1*$rayon;
+    transform: translate(-50%,-50%);
+    width: $size-ear;
+    z-index: 8;
+    &::after {
+        background-color: $color-ear-in;
+        border-radius: 100%;
+        content: '';
+        height: $size-ear/2;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        transform: translate(50%,50%);
+        width: $size-ear/2;
+        z-index: 9;
+    }
+}
+@mixin eye($angle) {
+    background-color: rgb(243, 243, 243);
+    border: 1px solid $color-ear-out;
+    border-radius: 100%;
+    height: $size-eye;
+    left: $origin-x + math.cos($angle) * ($rayon/1.7);
+    position: absolute;
+    top: $origin-y + math.sin($angle) * -1*($rayon/1.7);
+    transform: translate(-50%,-50%);
+    width: $size-eye;
+    z-index: 11;
+    &::before {
+        background-color: rgb(10, 10, 10);
+        border-radius: 100%;
+        content: '';
+        height: $size-eye/2;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        transform: translate(50%,50%);
+        width: $size-eye/2;
+        z-index: 12;
+    }
+    &::after {
+        background-color: white;
+        border-radius: 100%;
+        content: '';
+        height: $size-eye/8;
+        left: $size-eye/3;
+        position: absolute;
+        top: $size-eye/3;
+        width: $size-eye/8;
+        z-index: 13;
+    }
+}
+
+@mixin paw($angle) {
+    align-items: center;
+    background-color: $color-paw;
+    border-radius: 100%;
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+    height: $size-paw;
+    left: $origin-x + math.cos($angle) * $rayon;
+    position: absolute;
+    top: $origin-y + math.sin($angle) * -1*$rayon;
+    transform: translate(-50%,-50%);
+    width: $size-paw;
+    z-index: 11;
+}
+
+/*******************************************************/
+.av_action {
+    // border: 1px solid black;
+    height: $size-face/2 + $offset;
+    overflow: hidden;
+    position: relative;
+}
+.av_adopt {
+    bottom: 0px;
+    height: $offset;
+    left: 0px;
+    position: absolute;
+    width: $size-face+$offset;
+    z-index: 2;
+    &:hover ~ .av_container-offset {
+        opacity: 1;
+    }
+    &:hover ~ .av_container {
+        transform: translateY(0);
+    }
+}
+
+.av_cheek-left {
+    @include cheek($pos-cheek-left)
+}
+
+.av_cheek-right {
+    @include cheek($pos-cheek-right)
+}
+
+.av_container {
+    height: $size-face/2;
+    position: relative;
+    transform: translateY($size-face/2);
+    transition: all 400ms 200ms ease-in-out;
+    width: $size-face+$offset;
+    z-index: 0;
+}
+
+.av_container-offset {
+    bottom: $offset;
+    height: $size-face/2;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    transition: all 200ms;
+    width: $size-face+$offset;
+    z-index: 1;
+}
+
+.av_ear-left {
+    @include ear($pos-ear-left);
+}
+
+.av_ear-right {
+    @include ear($pos-ear-right);
+}
+
+.av_eye-left {
+    @include eye($pos-eye-left);
+}
+
+.av_eye-right {
+    @include eye($pos-eye-right);
+}
+
+.av_muzzle {
+    background-color: $color-muzzle;
+    border: 1px solid $color-ear-out;
+    border-radius: 100%;
+    height: $size-muzzle;
+    position: absolute;
+    top: $origin-y;
+    left: $origin-x;
+    transform: translate(-50%,-50%);
+    width: $size-muzzle;
+    z-index: 11;
+}
+
+.av_noze {
+    background-color: $color-noze;
+    border-radius: 100%;
+    height: $size-noze;
+    position: absolute;
+    top: $origin-y - $size-muzzle/2 + $size-noze/2;
+    left: $origin-x;
+    transform: translate(-50%,-50%);
+    width: $size-noze;
+    z-index: 12;
+}
+
+.av_paw-right {
+    @include paw($pos-paw-right)
+}
+
+.av_paw-left {
+    @include paw($pos-paw-left)
+}
+
+.av_teddy {
+    background-color: $color-face;
+    border: 1px solid $color-ear-out;
+    border-radius: 100%;
+    height: $size-face;
+    position: absolute;
+    transform: translateX($offset/2);
+    width: $size-face;
+    z-index: 10;
+}

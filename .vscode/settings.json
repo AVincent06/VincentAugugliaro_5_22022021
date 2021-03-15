@@ -1,3 +1,4 @@
 {
-    "dartsass.targetDirectory": "./css"
+    "dartsass.targetDirectory": "./css",
+    "liveServer.settings.port": 5501
 }

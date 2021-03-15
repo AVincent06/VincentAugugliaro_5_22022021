@@ -1,6 +1,8 @@
 @import "./variable_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+@import "./module-av-teddy/av_style.scss";  // SIDE PROJECT : developed in my spare time
+
 /* Ajout de CSS sur la couche Bootstrap */
 #cart-tooltip {
     display: none;

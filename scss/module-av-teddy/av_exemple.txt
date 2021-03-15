@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="av_style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="av_action">
+        <button class="av_adopt">Adopte-moi</button>
+        <div class="av_container">
+            <div class="av_teddy"></div>
+            <div class="av_ear-right"></div>
+            <div class="av_ear-left"></div>
+            <div class="av_muzzle"></div>
+            <div class="av_noze"></div>
+            <div class="av_eye-right"></div>
+            <div class="av_eye-left"></div>
+            <div class="av_cheek-right"></div>
+            <div class="av_cheek-left"></div>
+        </div>
+        <div class="av_container-offset">
+            <div class="av_paw-right">| | |</div>
+            <div class="av_paw-left">| | |</div>
+        </div>
+    </div>
+</body>
+</html>
