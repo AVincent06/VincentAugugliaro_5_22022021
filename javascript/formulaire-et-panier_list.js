@@ -1,6 +1,22 @@
+/*******************************************************************************
+ *  Nom         : formulaire-et-panier_list.js
+ *  Description : mise en forme et affichage dynamique du résumé du panier
+ *  Type        : formulaire-et-panier.html
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 1.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : cart.js, localStorage(selected, total)
+ *******************************************************************************/
+
 import * as Cart from './modules/cart.js';
 
 /********************  Déclaration des fonctions *********************/
+
+/** 
+* gestion de l'affichage dynamique sur la card de droite.
+*/
 function displayRightCard() {
     /* Mise en forme du contenu de #productsList */
     let myLines = Cart.readCart();
@@ -57,6 +73,10 @@ document.getElementById("remove-from-cart").addEventListener("click", function(e
     let myLines = Cart.readCart();
     selected = localStorage.getItem("selected");
     Cart.remove(myLines[selected]);
+
+    /* si le panier est vide, on revient sur la page d'accueil */
+    if (localStorage.getItem("teddyInCart") == '0') location.href="./index.html";
+
     Cart.tooltip();
     displayRightCard();
 });

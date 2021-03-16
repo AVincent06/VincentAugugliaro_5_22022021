@@ -1,3 +1,15 @@
+/*******************************************************************************
+ *  Nom         : ours-en-peluche.js
+ *  Description : mise en forme et affichage dynamique
+ *  Type        : dépendance de ours-en-peluche.html
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 1.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : cart.js, api/teddies
+ *******************************************************************************/
+
 import * as Cart from './modules/cart.js';
 
 /* mise à jour des quantités dans le panier */
@@ -5,7 +17,7 @@ Cart.refresh();
 
 /* récupération de l'identifiant du teddy */
 let url = new URL(window.location.href);
-let urlParameter = url.searchParams; 
+let urlParameter = url.searchParams;
 let idProduct = urlParameter.get('teddy');
 
 /* Envoi de la demande à l'API : "un teddy" */
@@ -14,7 +26,10 @@ fetch("http://localhost:3000/api/teddies/"+idProduct)
 .then(response => displayTeddy(response))
 .catch(error => alert("Erreur : " + error));
 
-/* Mise en forme et affichage du teddy */
+/** 
+* Mise en forme et affichage du teddy.
+* @param {Object} datas - objet renvoyé par l'API
+*/
 function displayTeddy(datas) {
     document.getElementById("image-url").src = datas.imageUrl;
 

@@ -1,13 +1,22 @@
-/*********************************************************
- * Fichier      : formulaire-et-panier_form.js
- * Rôle         : Gestion exclusif de la partie formulaire
- * Appel        : Dans le fichier formulaire-et-panier_form.html,
- *                juste après formulaire-et-panier_list.js
- * localStorage : total, contact, 
-*********************************************************/
+/*******************************************************************************
+ *  Nom         : formulaire-et-panier_form.js
+ *  Description : Gestion exclusif de la partie formulaire
+ *  Type        : formulaire-et-panier.html
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 1.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : cart.js, localStorage(selected, total, contact)
+ *******************************************************************************/
+
 import * as Cart from './modules/cart.js';
 
- /* Déclaration des classes */
+/* Déclaration des classes */
+
+/**
+* Classe correspondant à l'objet attendu par l'API en ORDER
+*/
  class Contact {
     constructor(firstName, lastName, address, city, email) {
         this.firstName = firstName;
@@ -19,6 +28,11 @@ import * as Cart from './modules/cart.js';
 }
 
 /* Déclaration des fonctions */
+
+/** 
+* Mise en forme du passage de paramètres par GET
+* @param {Object} datas - Objet renvoyé par l'API en ORDER
+*/
 function prepareOrderConfirmation(datas) {
     let total = localStorage.getItem("total");
     location.href="./confirmation-de-commande.html?order="+ datas.orderId +"&total="+total;

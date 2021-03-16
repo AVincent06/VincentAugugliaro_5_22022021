@@ -1,14 +1,23 @@
-/*****************************************************************
- * Module des Fonctions de gestion du panier sur le site Orinoco
- * 
- * Variables utilisées dans localStorage :
- *      teddyInCart
- *      teddyList
- * 
- * Version : 2.0
- *****************************************************************/
+/*******************************************************************************
+ *  Nom         : cart.js
+ *  Description : Module des Fonctions de gestion du panier sur le site Orinoco
+ *  Type        : export
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 2.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : localStorage (teddyInCart, teddyList)
+ *******************************************************************************/
 
 /********** FONCTIONS INTERNES AU MODULE *************/
+
+/** 
+* Comparaison d'égalité entre 2 objets
+* @param {Object} objectOne - nested object non supporté.
+* @param {Object} objectTwo - nested object non supporté.
+* @return {boolean} les objets sont ils identiques?.
+*/
 function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte entre 2 objets simples (égalité superficielle)
     const propertiesOne = Object.keys(objectOne);   // Object.keys() renvoie un tableau de propriétés de l'objet
     const propertiesTwo = Object.keys(objectTwo);
@@ -22,9 +31,11 @@ function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte ent
 }
 /*****************************************************/
 
-/********** FONCTIONS EXTERNES AU MODULE *************/
+/********** FONCTIONS/CLASS EXTERNES AU MODULE *************/
 
- /* Déclaration des classes */
+/**
+* class pour stocker le produit dans le panier sous forme d'objet
+*/
 export class Product {
     constructor(id, name, color, price, quantity, image) {
         this.id = id;
@@ -36,6 +47,10 @@ export class Product {
     }
 }
 
+/** 
+* Ajoute un produit au panier (localStorage: teddyList, teddyInCart)
+* @param {Object} product - instance de la Class Product
+*/
 export function add(product) { 
     if(!localStorage.getItem("teddyList")) {
         /* Initialisation */
@@ -61,20 +76,41 @@ export function add(product) {
     refresh();
 }
 
+/** 
+* Lit le panier (localStorage : teddyList)
+* @return {Array} tableau d'objet de class Product.
+*/
 export function readCart() {
     let myString = localStorage.getItem("teddyList");
     let myArray = JSON.parse(myString);
     return myArray;
 }
 
+/** 
+* Remet à jour, le nombre d'objet dans le panier affiché sur le menu (localStorage : teddyInCart)
+* et gère l'accès à la page panier.
+*/
 export function refresh() {
     /* Initialisation */
     if(!localStorage.getItem("teddyInCart")) localStorage.setItem("teddyInCart","0");
 
     /* Mise à jour du panier pour le retour utilisateur */
     document.getElementById("my-cart").innerHTML = "Panier <span class='badge bg-secondary rounded-pill'>" + localStorage.getItem("teddyInCart") + "</span>";
+
+    /* activation/désactivation de l'accès à la page panier */
+    if (localStorage.getItem("teddyInCart") == '0') {
+        document.getElementById("my-cart").style.pointerEvents = 'none';
+        document.getElementById("my-cart").style.cursor = 'default';
+    }else{
+        document.getElementById("my-cart").style.pointerEvents = 'auto';
+        document.getElementById("my-cart").style.cursor = 'pointer';
+    }
 }
 
+/** 
+* Supprime un produit dans le panier (localStorage : teddyList, teddyInCart)
+* @param {Object} product - instance de la Class Product
+*/
 export function remove(product) {
     /* Controle interne*/
     if(!localStorage.getItem("teddyList")) {
@@ -106,11 +142,17 @@ export function remove(product) {
     refresh();
 }
 
+/** 
+* Efface le localStorage et lance une mise à jour du panier
+*/
 export function reset() {
-    if(confirm("Etes-vous sûr de vouloir effacer le localStorage?")) localStorage.clear();
+    localStorage.clear();
     refresh();
 }
 
+/** 
+* gestion et affichage dynamique du tooltip du panier
+*/
 export function tooltip() {
     /* Mise en forme du contenu de cart-tooltip */
     let myLines = readCart();

@@ -1,9 +1,15 @@
-/*********************************************************
- * Fichier      : confirmation-de-commande.js
- * Rôle         : Retour utilisateur et nettoyage du localStorage
- * Appel        : Dans le fichier confirmation-de-commande.html
- * localStorage : contact
-*********************************************************/
+/*******************************************************************************
+ *  Nom         : confirmation-de-commande.js
+ *  Description : Retour utilisateur et nettoyage du localStorage
+ *  Type        : confirmation-de-commande.html
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 1.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : cart.js, localStorage(contact), GET(order, total)
+ *******************************************************************************/
+
 import * as Cart from './modules/cart.js';
 
 /* récupération des données transmises par GET */
@@ -65,3 +71,6 @@ document.getElementById("sous-total").innerHTML = sousTotal+' €';
 
 /* Mise en forme du contenu de #total */
 document.getElementById("total-bis").innerHTML = total+' €';
+
+/* remise à zéro du localStorage une fois toutes les informations affichées à l'utilisateur */
+Cart.reset();

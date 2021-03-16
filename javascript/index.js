@@ -1,3 +1,15 @@
+/*******************************************************************************
+ *  Nom         : index.js
+ *  Description : mise en forme et affichage dynamique
+ *  Type        : dépendance de index.html
+ *  Auteur      : Vincent Augugliaro
+ *  Version     : 1.0
+ *  Création    : -
+ *  Der. modif  : 16/03/2021
+ *  Accés SRC   : https://github.com/AVincent06/VincentAugugliaro_5_22022021
+ *  Contraintes : cart.js, api/teddies
+ *******************************************************************************/
+
 import * as Cart from './modules/cart.js';
 
 /* mise à jour des quantités dans le panier */
@@ -9,10 +21,12 @@ fetch("http://localhost:3000/api/teddies")
 .then(response => displayTeddies(response))
 .catch(error => alert("Erreur : " + error));
 
-/* Mise en forme et affichage des teddies */
+/** 
+* Mise en forme et affichage des teddies
+* @param {Object} datas - Tableau d'objets produit issus du panier.
+*/
 function displayTeddies(datas) {
     let productsContent = '';
-    
     for(let data of datas) {
         productsContent += 
             '<div class="col">' +
@@ -50,7 +64,4 @@ function displayTeddies(datas) {
 }
 
 /* Construction et gestion du tooltip */
-Cart.tooltip(); 
-
-//Cart.reset(); //POUR TEST A SUPPRIMER
-//alert('teddyInCart : ' +localStorage.getItem("teddyInCart")+ '\nteddyList : ' +localStorage.getItem("teddyList")); //POUR TEST A SUPPRIMER
+Cart.tooltip();
