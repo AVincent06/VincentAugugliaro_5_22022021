@@ -101,7 +101,6 @@ $size-paw : $size-ear;
         z-index: 13;
     }
 }
-
 @mixin paw($angle) {
     align-items: center;
     background-color: $color-paw;

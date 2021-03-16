@@ -1,0 +1,286 @@
+/*********************** @mixin ************************/
+/*******************************************************/
+.av_action {
+  height: 112.5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.av_adopt {
+  bottom: 0px;
+  height: 37.5px;
+  left: 0px;
+  position: absolute;
+  width: 187.5px;
+  z-index: 2;
+}
+.av_adopt:hover ~ .av_container-offset {
+  opacity: 1;
+}
+.av_adopt:hover ~ .av_container {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.av_cheek-left {
+  background-color: pink;
+  border-radius: 100%;
+  height: 15px;
+  left: 46.875px;
+  position: absolute;
+  top: 75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 15px;
+  z-index: 11;
+}
+
+.av_cheek-right {
+  background-color: pink;
+  border-radius: 100%;
+  height: 15px;
+  left: 140.625px;
+  position: absolute;
+  top: 75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 15px;
+  z-index: 11;
+}
+
+.av_container {
+  height: 75px;
+  position: relative;
+  -webkit-transform: translateY(75px);
+          transform: translateY(75px);
+  -webkit-transition: all 400ms 200ms ease-in-out;
+  transition: all 400ms 200ms ease-in-out;
+  width: 187.5px;
+  z-index: 0;
+}
+
+.av_container-offset {
+  bottom: 37.5px;
+  height: 75px;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  width: 187.5px;
+  z-index: 1;
+}
+
+.av_ear-left {
+  background-color: #886212;
+  border-radius: 100%;
+  height: 37.5px;
+  left: 36.2966667661px;
+  position: absolute;
+  top: 26.7909292735px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 37.5px;
+  z-index: 8;
+}
+.av_ear-left::after {
+  background-color: #c28c19;
+  border-radius: 100%;
+  content: "";
+  height: 18.75px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+  width: 18.75px;
+  z-index: 9;
+}
+
+.av_ear-right {
+  background-color: #886212;
+  border-radius: 100%;
+  height: 37.5px;
+  left: 151.2033332339px;
+  position: absolute;
+  top: 26.7909292735px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 37.5px;
+  z-index: 8;
+}
+.av_ear-right::after {
+  background-color: #c28c19;
+  border-radius: 100%;
+  content: "";
+  height: 18.75px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+  width: 18.75px;
+  z-index: 9;
+}
+
+.av_eye-left {
+  background-color: #f3f3f3;
+  border: 1px solid #886212;
+  border-radius: 100%;
+  height: 30px;
+  left: 62.5541125947px;
+  position: absolute;
+  top: 43.8041125947px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 30px;
+  z-index: 11;
+}
+.av_eye-left::before {
+  background-color: #0a0a0a;
+  border-radius: 100%;
+  content: "";
+  height: 15px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+  width: 15px;
+  z-index: 12;
+}
+.av_eye-left::after {
+  background-color: white;
+  border-radius: 100%;
+  content: "";
+  height: 3.75px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: 3.75px;
+  z-index: 13;
+}
+
+.av_eye-right {
+  background-color: #f3f3f3;
+  border: 1px solid #886212;
+  border-radius: 100%;
+  height: 30px;
+  left: 124.9458874053px;
+  position: absolute;
+  top: 43.8041125947px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 30px;
+  z-index: 11;
+}
+.av_eye-right::before {
+  background-color: #0a0a0a;
+  border-radius: 100%;
+  content: "";
+  height: 15px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+  width: 15px;
+  z-index: 12;
+}
+.av_eye-right::after {
+  background-color: white;
+  border-radius: 100%;
+  content: "";
+  height: 3.75px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: 3.75px;
+  z-index: 13;
+}
+
+.av_muzzle {
+  background-color: #e8b64b;
+  border: 1px solid #886212;
+  border-radius: 100%;
+  height: 37.5px;
+  position: absolute;
+  top: 75px;
+  left: 93.75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 37.5px;
+  z-index: 11;
+}
+
+.av_noze {
+  background-color: #4e380a;
+  border-radius: 100%;
+  height: 9.375px;
+  position: absolute;
+  top: 60.9375px;
+  left: 93.75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 9.375px;
+  z-index: 12;
+}
+
+.av_paw-right {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #886212;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 37.5px;
+  left: 168.75px;
+  position: absolute;
+  top: 75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 37.5px;
+  z-index: 11;
+}
+
+.av_paw-left {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #886212;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 37.5px;
+  left: 18.75px;
+  position: absolute;
+  top: 75px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 37.5px;
+  z-index: 11;
+}
+
+.av_teddy {
+  background-color: #c28c19;
+  border: 1px solid #886212;
+  border-radius: 100%;
+  height: 150px;
+  position: absolute;
+  -webkit-transform: translateX(18.75px);
+          transform: translateX(18.75px);
+  width: 150px;
+  z-index: 10;
+}
+/*# sourceMappingURL=av_style.css.map */
