@@ -23,7 +23,7 @@ fetch("http://localhost:3000/api/teddies")
 
 /** 
 * Mise en forme et affichage des teddies
-* @param {Object} datas - Tableau d'objets produit issus du panier.
+* @param {Object} datas - Tableau d'objets produit issus de la réponse de l'API
 */
 function displayTeddies(datas) {
     let productsContent = '';
