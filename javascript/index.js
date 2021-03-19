@@ -19,7 +19,7 @@ Cart.refresh();
 fetch("http://localhost:3000/api/teddies")
 .then(response => response.json())
 .then(response => displayTeddies(response))
-.catch(error => alert("Erreur : " + error));
+.catch(error => location.href="erreur.html");
 
 /** 
 * Mise en forme et affichage des teddies

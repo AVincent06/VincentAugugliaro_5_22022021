@@ -29,6 +29,24 @@ function areIdentical(objectOne, objectTwo) {   // Teste l'égalité stricte ent
 
     return true;
 }
+
+/** 
+* Comparaison d'égalité entre 2 objets de la classe Product sans comparer leur propriété 'quantity'
+* @param {Object} objectOne - nested object non supporté.
+* @param {Object} objectTwo - nested object non supporté.
+* @return {boolean} les objets sont ils identiques?.
+*/
+function areIdenticalExceptQuantity(objectOne, objectTwo) { 
+    const propertiesOne = Object.keys(objectOne); 
+    const propertiesTwo = Object.keys(objectTwo);
+  
+    if(propertiesOne.length !== propertiesTwo.length) return false;
+  
+    for(let property of propertiesOne)
+        if ((objectOne[property] !== objectTwo[property]) && (property !== "quantity")) return false;
+
+    return true;
+}
 /*****************************************************/
 
 /********** FONCTIONS/CLASS EXTERNES AU MODULE *************/
@@ -61,8 +79,18 @@ export function add(product) {
     } else {
         /* ajout de product au localStorage */
         let myString = localStorage.getItem("teddyList");
-        let myArray = JSON.parse(myString);
-        myArray.push(product);
+        let myArray = JSON.parse(myString); 
+        
+        let isAdded = false;
+        for(let i = 0; i < myArray.length; i++) { 
+            if( areIdenticalExceptQuantity(myArray[i], product) ) { // est déjà présent dans le panier
+                myArray[i].quantity = parseInt(myArray[i].quantity,10) + parseInt(product.quantity,10);
+                isAdded = true; 
+                break; 
+            }
+        }
+        if(!isAdded) myArray.push(product); //n'est pas déjà présent dans le panier
+
         myString = JSON.stringify(myArray);
         localStorage.setItem("teddyList",myString);
     }

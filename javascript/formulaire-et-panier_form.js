@@ -64,5 +64,5 @@ document.getElementById("my-form").addEventListener("submit", function(e) {
     })
     .then(response => response.json())
     .then(response => prepareOrderConfirmation(response))
-    .catch(error => alert("Erreur : " + error));
+    .catch(error => location.href="erreur.html");
 });
