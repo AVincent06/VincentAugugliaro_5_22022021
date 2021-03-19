@@ -24,7 +24,7 @@ let idProduct = urlParameter.get('teddy');
 fetch("http://localhost:3000/api/teddies/"+idProduct)
 .then(response => response.json())
 .then(response => displayTeddy(response))
-.catch(error => alert("Erreur : " + error));
+.catch(error => location.href="erreur.html");
 
 /** 
 * Mise en forme et affichage du teddy.
